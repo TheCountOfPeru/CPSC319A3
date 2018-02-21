@@ -1,4 +1,5 @@
 /*
+ * Adapted from CPSC 319 lecture notes
  * Node class for a binary search tree
  */
 public class Node {
@@ -82,5 +83,7 @@ public class Node {
 	public void setParent(Node parent) {
 		this.parent = parent;
 	}
-	
+	public void visit() {
+		System.out.print(getLastname() + " ");
+	}
 }

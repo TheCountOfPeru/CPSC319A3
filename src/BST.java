@@ -1,5 +1,7 @@
-import java.util.Queue;
-
+/*
+ * Adapted from CPSC 319 lecture notes
+ * Recursively visiting all nodes: Depth-first.
+ */
 public class BST {
 	private Node root;
 	
@@ -22,28 +24,27 @@ public class BST {
 		else
 			parent.setLeft(new Node(opcd, snum, lnam, dep, prog, yr, null, null, parent));
 	}
-	/*
-	 * Recursively visiting all nodes: Depth-first.
-	 */
+	
 	public void depthfirst(Node current) {
 		if(current != null) {
 			depthfirst(current.getLeft());
-		//do something at current
+			current.visit();
 			depthfirst(current.getRight());
 		}
 	}
+	
 	public void breadthfirst() {
 		Node p = root;
-		Queue queue = new Queue();
+		myqueue queue = new myqueue();
 		if (p != null) {
 			queue.enqueue(p);
 			while (!queue.isEmpty()) {
-				p = (Node) queue.dequeue();
-				//do something at p
-				if (p.getLeft() != null)
-					queue.enqueue(p.getLeft());
-				if (p.getRight() != null)
-					queue.enqueue(p.getRight());
+			p =  (Node) queue.dequeue();
+			p.visit();
+			if (p.getLeft() != null)
+			queue.enqueue(p.getLeft());
+			if (p.getRight() != null)
+			queue.enqueue(p.getRight());
 			}
 		}
 	}
