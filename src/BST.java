@@ -8,6 +8,9 @@ public class BST {
 	public BST() {
 		root = null;
 	}
+	public Node getroot(){
+		return root;
+	}
 	public void insert(char opcd, int snum, String lnam, String dep, String prog, int yr) {
 		Node current = root, parent = null;
 		while(current != null) {
@@ -31,6 +34,7 @@ public class BST {
 			current.visit();
 			depthfirst(current.getRight());
 		}
+		
 	}
 	
 	public void breadthfirst() {
@@ -47,5 +51,6 @@ public class BST {
 			queue.enqueue(p.getRight());
 			}
 		}
+		
 	}
 }

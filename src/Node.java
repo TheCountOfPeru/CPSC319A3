@@ -84,6 +84,6 @@ public class Node {
 		this.parent = parent;
 	}
 	public void visit() {
-		System.out.print(getLastname() + " ");
+		System.out.print(getLastname().trim() + " ");
 	}
 }
