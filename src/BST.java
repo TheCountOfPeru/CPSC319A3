@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 /*
  * Adapted from CPSC 319 lecture notes
  * Recursively visiting all nodes: Depth-first.
@@ -28,23 +30,23 @@ public class BST {
 			parent.setLeft(new Node(opcd, snum, lnam, dep, prog, yr, null, null, parent));
 	}
 	
-	public void depthfirst(Node current) {
+	public void depthfirst(Node current, PrintWriter pw) {
 		if(current != null) {
-			depthfirst(current.getLeft());
-			current.visit();
-			depthfirst(current.getRight());
+			depthfirst(current.getLeft(), pw);
+			current.visit(pw);
+			depthfirst(current.getRight(), pw);
 		}
 		
 	}
 	
-	public void breadthfirst() {
+	public void breadthfirst(PrintWriter pw) {
 		Node p = root;
 		myqueue queue = new myqueue();
 		if (p != null) {
 			queue.enqueue(p);
 			while (!queue.isEmpty()) {
 			p =  (Node) queue.dequeue();
-			p.visit();
+			p.visit(pw);
 			if (p.getLeft() != null)
 			queue.enqueue(p.getLeft());
 			if (p.getRight() != null)

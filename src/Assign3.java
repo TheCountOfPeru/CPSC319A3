@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -19,6 +21,7 @@ public class Assign3 {
 	public static void main(String[] args) {
 		File fileIn;
 		Scanner scanner;
+		PrintWriter pw;
 		//Command line argument verification 
 		/*
 		if(args.length != 3) {
@@ -60,10 +63,23 @@ public class Assign3 {
 		}
 		current = mybst.getroot();
 		System.out.println("BST created successfully.");
-		mybst.breadthfirst();
-		System.out.println("Breadth first traversal success.");
-		mybst.depthfirst(current);
-		System.out.println("Depth first traversal success.");
+		
+		try {
+			pw = new PrintWriter("output1.txt");
+			mybst.depthfirst(current, pw);
+			System.out.println("Depth first traversal success.");
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error opening text for depth traversal output. File not found.");
+		}
+		try {
+			pw = new PrintWriter("output2.txt");
+			mybst.breadthfirst(pw);
+			System.out.println("Breadth first traversal success.");
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error opening text for breadth traversal output. File not found.");
+		}
 	}
 
 }
