@@ -33,7 +33,8 @@ public class Assign3 {
 			System.exit(-1);
 		}
 		*/
-		fileIn = new File("a3input1.txt");//args[0]);
+		fileIn = new File("a3input2.txt");//args[0]);
+		mylinkedliststrings rectodelete = new mylinkedliststrings();
 		BST mybst = new BST();
 		Node current; 
 		String temp = "";
@@ -56,6 +57,8 @@ public class Assign3 {
 				year = Integer.parseInt(temp.substring(41));
 				System.out.println(lnam.trim());
 				mybst.insert(opc, snum, lnam, dep, prg, year);
+				if(opc == 'D')									//keep track of records with 'D' opcode
+					rectodelete.addToTail(lnam);
 			}
 		}catch(Exception e){
 			System.out.println("Failed to read the text file. Quitting...");
@@ -74,6 +77,19 @@ public class Assign3 {
 		}
 		try {
 			pw = new PrintWriter("output2.txt");
+			mybst.breadthfirst(pw);
+			System.out.println("Breadth first traversal success.");
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error opening text for breadth traversal output. File not found.");
+		}
+		nodestrings k = rectodelete.getHead();
+		while(k != null) {
+			mybst.deletebymerge(k.getName());
+			k = k.getNext();
+		}
+		try {
+			pw = new PrintWriter("output3.txt");
 			mybst.breadthfirst(pw);
 			System.out.println("Breadth first traversal success.");
 			pw.close();

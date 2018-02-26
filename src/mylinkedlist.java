@@ -1,5 +1,6 @@
 /*
- * Adapted from CPSC 319 lecture notes
+ * Class methods adapted from CPSC 319 lecture notes
+ * A linked list class 
  */
 public class mylinkedlist {
 	private nodell head;

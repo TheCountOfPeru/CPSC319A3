@@ -7,9 +7,7 @@ Phillips
 White 
 Bannister 
 Green 
-McKay 
 Morrison 
-Schafer 
 Smith 
 Woods 
 Banks 
@@ -23,9 +21,7 @@ Fisher
 Hall 
 Jones 
 Walker 
-Zot 
 Doyle 
-Hall 
 Hopper 
 Jordan 
 West 
@@ -33,4 +29,3 @@ Watson
 Weston 
 Waters 
 Watts 
-Weston 

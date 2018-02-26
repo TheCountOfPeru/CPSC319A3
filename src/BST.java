@@ -1,8 +1,8 @@
 import java.io.PrintWriter;
 
 /*
- * Adapted from CPSC 319 lecture notes
- * Recursively visiting all nodes: Depth-first.
+ * Class methods adapted from CPSC 319 lecture notes
+ * A binary search tree class
  */
 public class BST {
 	private Node root;
@@ -29,16 +29,13 @@ public class BST {
 		else
 			parent.setLeft(new Node(opcd, snum, lnam, dep, prog, yr, null, null, parent));
 	}
-	
 	public void depthfirst(Node current, PrintWriter pw) {
 		if(current != null) {
 			depthfirst(current.getLeft(), pw);
 			current.visit(pw);
 			depthfirst(current.getRight(), pw);
 		}
-		
 	}
-	
 	public void breadthfirst(PrintWriter pw) {
 		Node p = root;
 		myqueue queue = new myqueue();
@@ -54,5 +51,41 @@ public class BST {
 			}
 		}
 		
+	}
+	public void deletebymerge(String el) {
+		Node tmp, node, p = root, prev = null;
+		while(p != null && p.getLastname() != el) {//find the node p with element el
+			prev = p;
+			if(p.getLastname().compareTo(el) < 0)
+				p = p.getRight();
+			else
+				p = p.getLeft();
+		}
+			node = p;
+			if(p != null && p.getOpcode() == 'D') {
+				if(node.getRight() == null)			//If node has no right child attach the left child 
+					node = node.getLeft(); 			//to the parent
+				else if(node.getLeft() == null)		//If node has no left child attach the right child
+					node = node.getRight();			//to the parent
+				else {								//be ready for merging subtrees
+					tmp = node.getLeft();			//1. move left
+					while(tmp.getRight() != null)	//2. and then right as far as possible
+						tmp = tmp.getRight();		
+					tmp.setRight(node.getRight());	//3. Establish the link between the rightmost
+					node = node.getLeft();			//node of the left subtree and the right subtree
+				}
+				if(p == root)
+					root = node;
+				else if(prev.getLeft() == p)
+					prev.setLeft(node);
+				else
+					prev.setRight(node);
+			}
+			else if(root != null)
+				System.out.println("Node to delete not found.");
+			else
+				System.out.println("The tree is empty.");
+			
+	
 	}
 }

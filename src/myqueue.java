@@ -1,5 +1,6 @@
 /*
  * Adapted from Data Structures and Algorithms 2nd Edition, Drozdek p.153
+ * A queue class using a linked list
  */
 public class myqueue {
 	private mylinkedlist list = new mylinkedlist();

@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 
 /*
- * Adapted from CPSC 319 lecture notes
+ * Class methods adapted from CPSC 319 lecture notes
  * Node class for a binary search tree
  */
 public class Node {
