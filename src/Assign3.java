@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Assign3 {
 	
@@ -34,7 +33,6 @@ public class Assign3 {
 		}
 		*/
 		fileIn = new File("a3input2.txt");//args[0]);
-		mylinkedliststrings rectodelete = new mylinkedliststrings();
 		BST mybst = new BST();
 		Node current; 
 		String temp = "";
@@ -45,22 +43,26 @@ public class Assign3 {
 		String prg;
 		int year;
 		try {
-			System.out.println("Scanning text file for words...");
+			System.out.println("Scanning text file for records...");
 			scanner = new Scanner(fileIn);
 			while(scanner.hasNextLine()){ 
 				temp = scanner.nextLine();
 				opc = temp.charAt(0);
-				snum = Integer.parseInt(temp.substring(1, 7));
-				lnam = temp.substring(8, 32);
-				dep = temp.substring(33, 36);
-				prg = temp.substring(37, 40);
-				year = Integer.parseInt(temp.substring(41));
-				System.out.println(lnam.trim());
-				mybst.insert(opc, snum, lnam, dep, prg, year);
-				if(opc == 'D')									//keep track of records with 'D' opcode
-					rectodelete.addToTail(lnam);
+				if(opc == 'D') {
+					mybst.deletebymerge(temp.substring(8, 32).trim());
+				}
+				else if(opc == 'I'){
+					snum = Integer.parseInt(temp.substring(1, 7));
+					lnam = temp.substring(8, 32);
+					dep = temp.substring(33, 36);
+					prg = temp.substring(37, 40);
+					year = Integer.parseInt(temp.substring(41));
+					System.out.println(lnam.trim());
+					mybst.insert(opc, snum, lnam.trim(), dep, prg, year);
+				}												
 			}
-		}catch(Exception e){
+			scanner.close();
+		}catch(FileNotFoundException e){
 			System.out.println("Failed to read the text file. Quitting...");
 			System.exit(-1);
 		}
@@ -83,19 +85,7 @@ public class Assign3 {
 		} catch (FileNotFoundException e) {
 			System.out.println("Error opening text for breadth traversal output. File not found.");
 		}
-		nodestrings k = rectodelete.getHead();
-		while(k != null) {
-			mybst.deletebymerge(k.getName());
-			k = k.getNext();
-		}
-		try {
-			pw = new PrintWriter("output3.txt");
-			mybst.breadthfirst(pw);
-			System.out.println("Breadth first traversal success.");
-			pw.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error opening text for breadth traversal output. File not found.");
-		}
+		System.out.println("The program has completed. Quitting...");
 	}
 
 }
