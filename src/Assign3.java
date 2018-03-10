@@ -21,8 +21,9 @@ public class Assign3 {
 		File fileIn;
 		Scanner scanner;
 		PrintWriter pw;
+		
 		//Command line argument verification 
-		/*
+		
 		if(args.length != 3) {
 			System.out.println("Incorrect number of inputs. Quitting...");
 			System.exit(-1);
@@ -31,8 +32,8 @@ public class Assign3 {
 			System.out.println("Unable to use files that are not text files. Check your file names. Quitting...");
 			System.exit(-1);
 		}
-		*/
-		fileIn = new File("a3input2.txt");//args[0]);
+		
+		fileIn = new File(args[0]);
 		BST mybst = new BST();
 		Node current; 
 		String temp = "";
@@ -67,10 +68,9 @@ public class Assign3 {
 			System.exit(-1);
 		}
 		current = mybst.getroot();
-		System.out.println("BST created successfully.");
-		
 		try {
-			pw = new PrintWriter("output1.txt");
+			pw = new PrintWriter(args[1]);
+			pw.println("Depth first traversal:");
 			mybst.depthfirst(current, pw);
 			System.out.println("Depth first traversal success.");
 			pw.close();
@@ -78,7 +78,8 @@ public class Assign3 {
 			System.out.println("Error opening text for depth traversal output. File not found.");
 		}
 		try {
-			pw = new PrintWriter("output2.txt");
+			pw = new PrintWriter(args[2]);
+			pw.println("Breadth first traversal:");
 			mybst.breadthfirst(pw);
 			System.out.println("Breadth first traversal success.");
 			pw.close();

@@ -66,15 +66,18 @@ public class BST {
 		if(p != null && p.getLastname().equals(el)) {
 			if(node.getRight() == null)			//If node has no right child attach the left child 
 				node = node.getLeft(); 			//to the parent
+			
 			else if(node.getLeft() == null)		//If node has no left child attach the right child
 				node = node.getRight();			//to the parent
-			else {								//be ready for merging subtrees
+			
+			else {								//Node has two children: be ready for merging subtrees
 				tmp = node.getLeft();			//1. move left
 				while(tmp.getRight() != null)	//2. and then right as far as possible
 					tmp = tmp.getRight();		
+				
 				tmp.setRight(node.getRight());	//3. Establish the link between the rightmost
 				node = node.getLeft();			//node of the left subtree and the right subtree
-			}
+			}									//Basically find the maximum element of the left subtree
 			if(p == root)
 				root = node;
 			else if(prev.getLeft() == p)

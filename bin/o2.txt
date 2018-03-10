@@ -1,0 +1,27 @@
+Breadth first traversal:
+LaPorte 
+Black 
+Last 
+Bannister 
+Green 
+Phillips 
+Banks 
+Card 
+Johnston 
+Morrison 
+White 
+Appleford 
+Fisher 
+Hopper 
+Jones 
+Newman 
+Smith 
+Woods 
+Doyle 
+Jordan 
+Sykes 
+Walker 
+West 
+Watson 
+Waters 
+Watts 

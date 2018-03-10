@@ -1,0 +1,27 @@
+Depth first traversal:
+Appleford 
+Banks 
+Bannister 
+Black 
+Card 
+Doyle 
+Fisher 
+Green 
+Hopper 
+Johnston 
+Jones 
+Jordan 
+LaPorte 
+Last 
+Morrison 
+Newman 
+Phillips 
+Smith 
+Sykes 
+Walker 
+Waters 
+Watson 
+Watts 
+West 
+White 
+Woods 
